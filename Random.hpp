@@ -12,7 +12,9 @@ namespace Rand {
 	public:
 		Random();
 		int RandInt(int min, int max);
+		int RandInt(int max);
 		double RandDouble(double min, double max);
+		double RandDouble(double max);
 		bool RandBool(double rate);
 		bool RandBool();
 		int RandDiscrete(std::vector<double> rateSequence);
@@ -28,8 +30,17 @@ inline int Rand::Random::RandInt(int min, int max) {
 	return dist(mt);
 }
 
+inline int Rand::Random::RandInt(int max) {
+	std::uniform_int_distribution<int> dist(0, max);
+	return dist(mt);
+}
+
 inline double Rand::Random::RandDouble(double min, double max){
 	std::uniform_real_distribution<double> dist(min,max);
+}
+
+inline double Rand::Random::RandDouble(double max){
+	std::uniform_real_distribution<double> dist(0, max);
 }
 
 inline bool Rand::Random::RandBool(double rate){
