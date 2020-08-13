@@ -3,7 +3,7 @@ Rand::Random::Random() {
 	mt.seed(rand());
 }
 
-int Rand::Random::Rand(int min, int max) {
+int Rand::Random::RandInt(int min, int max) {
 	std::uniform_int_distribution<int> dist(min, max);
 	return dist(mt);
 }
